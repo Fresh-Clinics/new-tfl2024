@@ -97,7 +97,6 @@ const CalendarComponent = () => {
           popup.innerHTML = `
             <div class="popup-content">
                 <span class="close-popup" onclick="this.parentElement.parentElement.remove()">×</span>
-                ${getResourceLogo(event.resourceId) ? `<img src="${getResourceLogo(event.resourceId)}" style="width: 100px; margin: 10px auto;" alt="Resource Logo">` : ''}
                 <p><strong>${startDateTime} - ${endDateTime}</strong></p>
                 <div style="font-size: 1rem!important; font-family: Arial; line-height:2;"><strong>${event.title}</h3></strong></div>
                 <div style="font-size: 0.9rem; font-family: Arial;">${event.extendedProps.description}</div>                  
@@ -139,10 +138,6 @@ function formatTimeToAEST(date) {
   return DateTime.fromJSDate(date).setZone('Australia/Sydney').toFormat('h:mm a');
 }
 
-function getResourceLogo(resourceId) {
-  const resource = getHardcodedResources().find(r => r.id === resourceId);
-  return resource && resource.logo ? `image-files/${resource.logo}` : null;
-}
 
 // Combine hardcoded events and events from events.tsx
 function getCombinedEvents() {
